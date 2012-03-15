@@ -19,7 +19,6 @@ function VUERender(model, tag) {
 		});
 		//Draw text
 		var text = paper.text(val.x-model.xmin+val.width/2,val.y-model.ymin+val.height/2,val.label);
-		$('#logpane').prepend(val.label+'<br/>');
 		text.attr({
 			fill: val.textColor,
 			"font-family": val.font.face,
@@ -35,11 +34,11 @@ function VUERender(model, tag) {
 			(val.point2.x-model.xmin).toString()+","+(val.point2.y-model.ymin).toString());
 		line.attr({
 			stroke:val.strokeColor,
-			"stroke-width":val.strokeWidth});
+			"stroke-width":val.strokeWidth,
+			"arrow-end":"block-wide-long"});
 		//Draw text
 		if (val.label != "") {
 			var text = paper.text(val.x - model.xmin + val.width / 2, val.y - model.ymin + val.height / 2, val.label);
-			$('#logpane').prepend(val.label + '<br/>');
 			text.attr({
 				fill: val.textColor,
 				"font-family": val.font.face,

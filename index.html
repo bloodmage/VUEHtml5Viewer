@@ -4,13 +4,6 @@
 		<script src="raphael-min.js" type="text/javascript"></script>
 		<script src="vuelitemodel.js"></script>
 		<script src="vuerender.js"></script>
-		<style>
-			#holder {
-				position:absolute;
-				left:0px;
-				top:0px;								
-			};
-		</style>
 	</head>
     <body>
     	<center id="prepare">
@@ -19,6 +12,37 @@
 		</center>
 		<script language="JavaScript">
 			var model;
+			//Mouse interactivity
+			function MouseStart() {
+				var moving = false;
+				var stx, sty;
+				$('#holder')
+					.mousedown(function(eobj){
+						if (eobj.which!=2) return;
+						stx = eobj.clientX;
+						sty = eobj.clientY;
+						moving=true;
+						eobj.stopPropagation();
+						eobj.preventDefault();
+					})
+					.mousemove(function(eobj){
+						if (!moving) return;
+						$('#holder').css('left',parseFloat($('#holder').css('left'))+eobj.clientX-stx);
+						$('#holder').css('top',parseFloat($('#holder').css('top'))+eobj.clientY-sty);
+						stx = eobj.clientX;
+						sty = eobj.clientY;
+						eobj.stopPropagation();
+						eobj.preventDefault();
+					})
+					.mouseup(function(eobj){
+						if (!moving) return;
+						if (eobj.which!=2) return;
+						moving = false;
+						eobj.stopPropagation();
+						eobj.preventDefault();
+						return false;
+					});
+			}
 			$(setTimeout(function(){
 				$('#logpane').prepend('Program loaded.<br/>');
 				$.ajax({
@@ -34,11 +58,15 @@
 						
 						$('#prepare').hide();
 						$('#logpane').hide();
+						
+						MouseStart();
 					}
 				});
 			},1000));
 		</script>
 		<div id="logpane" style="position:absolute; left:0; top:0; background-color:darkgreen; color:white;"></div>
-		<div id="holder"></div>	
+		<div id="holdvp">
+		<div id="holder" style="position:absolute;left:0;top:0;"></div>
+		</div>	
     </body>
 </html>
