@@ -6,8 +6,9 @@ function GetFont(paper,fontobj) {
 	return paper.getFont(fontobj.face);
 }
 function VUERender(model, tag) {
-	var paper = Raphael(tag, model.width+1000, model.height+1000);
+	var paper = ScaleRaphael(tag, model.width+1000, model.height+1000);
 	
+	$('#logpane').prepend("Drawing nodes<br/>");
 	//Draw roundrect on place
 	$.each(model.nodes, function(idx,val){
 		//Draw outline
@@ -26,6 +27,7 @@ function VUERender(model, tag) {
 		});
 	});
 	
+	$('#logpane').prepend("Drawing edges<br/>");
 	//Draw lines on place
 	$.each(model.links, function(idx,val){
 		//Draw line
@@ -46,6 +48,9 @@ function VUERender(model, tag) {
 			});
 		}
 	});
+	$('#logpane').prepend("Done drawing<br/>");
+
+	return paper;
 }
 
 
