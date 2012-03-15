@@ -1,5 +1,6 @@
 /* This is a smallest model for VUE, implements least part of VUE dataformat
  * To support demanded VUE file to display
+ * File copyright: Bloodmage( Zhouyisu ) License: CreativeCommons-BY-NC-ND 
  */
 
 function VUELiteNode(N) {

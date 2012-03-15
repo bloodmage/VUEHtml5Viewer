@@ -1,5 +1,6 @@
 /* VUE Render cooperates with raphael library
  * Give VUELiteModel, draw things on SVG canvas
+ * File copyright: Bloodmage( Zhouyisu ) License: CreativeCommons-BY-NC-ND 
  */
 
 function GetFont(paper,fontobj) {
