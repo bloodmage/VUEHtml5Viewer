@@ -31,7 +31,7 @@
 				paper.changeSize(sw/scaling,sh/scaling);
 				$('#holdvp')
 					.mousedown(function(eobj){
-						if (eobj.which!=3) return;
+						if (eobj.which!=3&&eobj.which!=2) return;
 						stx = eobj.clientX;
 						sty = eobj.clientY;
 						moving=true;
@@ -49,7 +49,7 @@
 					})
 					.mouseup(function(eobj){
 						if (!moving) return;
-						if (eobj.which!=3) return;
+						if (eobj.which!=3&&eobj.which!=2) return;
 						l = l + (eobj.clientX-stx);
 						t = t + (eobj.clientY-sty);
 						$('#holder').css('left',l).css('top',t);
