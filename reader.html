@@ -17,8 +17,8 @@
 	</head>
     <body oncontextmenu="return false;">
     	<center id="prepare">
-			<img src="loading.gif"><br/>
-			<font face="verdana"><h1><font color="red">V</font><font color="orange">U</font><font color="purple">E</font> <font color="darkgreen">Reader</font> preparing</h1></font>
+			<img src="loading.gif" class="V"><br/>
+            <font face="verdana"><h1><font color="red">V</font><font color="orange">U</font><font color="purple">E</font> <font color="darkgreen">Reader</font><span class="V"> preparing</span></h1></font>
 		</center>
 		<script language="JavaScript">
 			var model;
@@ -87,7 +87,8 @@
 						model = new VUELiteModel(xml);
 						paper = VUERender(model, "holder"); //Change this on demand
 						
-						$('#prepare').hide();
+                        $('#prepare').css('opacity','0.1');
+                        $('.V').hide();
 						$('#logpane').hide();
 						
 						MouseStart(model.width, model.height);
