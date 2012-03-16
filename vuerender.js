@@ -9,25 +9,6 @@ function GetFont(paper,fontobj) {
 function VUERender(model, tag) {
 	var paper = ScaleRaphael(tag, model.width+1000, model.height+1000);
 	
-	$('#logpane').prepend("Drawing nodes<br/>");
-	//Draw roundrect on place
-	$.each(model.nodes, function(idx,val){
-		//Draw outline
-		var rect = paper.rect(val.x-model.xmin,val.y-model.ymin,val.width,val.height,10);
-		rect.attr({
-			fill: val.fillColor,
-			stroke: val.strokeColor,
-			"stroke-width": val.strokeWidth
-		});
-		//Draw text
-		var text = paper.text(val.x-model.xmin+val.width/2,val.y-model.ymin+val.height/2,val.label);
-		text.attr({
-			fill: val.textColor,
-			"font-family": val.font.face,
-			"font-size": val.font.size
-		});
-	});
-	
 	$('#logpane').prepend("Drawing edges<br/>");
 	//Draw lines on place
 	$.each(model.links, function(idx,val){
@@ -49,6 +30,26 @@ function VUERender(model, tag) {
 			});
 		}
 	});
+
+    $('#logpane').prepend("Drawing nodes<br/>");
+	//Draw roundrect on place
+	$.each(model.nodes, function(idx,val){
+		//Draw outline
+		var rect = paper.rect(val.x-model.xmin,val.y-model.ymin,val.width,val.height,10);
+		rect.attr({
+			fill: val.fillColor,
+			stroke: val.strokeColor,
+			"stroke-width": val.strokeWidth
+		});
+		//Draw text
+		var text = paper.text(val.x-model.xmin+val.width/2,val.y-model.ymin+val.height/2,val.label);
+		text.attr({
+			fill: val.textColor,
+			"font-family": val.font.face,
+			"font-size": val.font.size
+		});
+	});
+	
 	$('#logpane').prepend("Done drawing<br/>");
 
 	return paper;
