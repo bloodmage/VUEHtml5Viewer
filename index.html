@@ -78,7 +78,7 @@
 				$('#logpane').prepend('Program loaded.<br/>');
 				$.ajax({
 					type: 'GET',
-					url: 'data.vue',
+					url: 'data.vue?'+Math.random().toString(),
 					dataType: 'text',
 					success: function(data) {
 						/*Fix VUE to follow standard*/
