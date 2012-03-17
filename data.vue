@@ -1,14 +1,14 @@
-<!-- Tufts VUE 3.1.2 concept-map (NNResearch.vue) 2012-03-16 -->
+<!-- Tufts VUE 3.1.2 concept-map (NNResearch.vue) 2012-03-17 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
 <!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/C:/Program%20Files%20(x86)/VUE/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Fri Mar 16 10:38:04 CST 2012 by zys on platform Windows 7 6.1 in JVM 1.6.0_29-b11 -->
+<!-- Do Not Remove: Saved date Sat Mar 17 11:14:21 CST 2012 by zys on platform Windows 7 6.1 in JVM 1.6.0_29-b11 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built March 8 2012 at 1310 by vue on Linux 2.4.21-63.EL i386 JVM 1.5.0_06-b05(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0" label="NNResearch.vue"
     created="1329652491990" x="0.0" y="0.0" width="1.4E-45"
     height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1331865484711" size="108545"
+    <resource referenceCreated="1331954061311" size="110551"
         spec="Z:\gitted\NNResearch.vue" type="1" xsi:type="URLResource">
         <title>NNResearch.vue</title>
         <property key="File" value="Z:\gitted\NNResearch.vue"/>
@@ -2038,7 +2038,7 @@
         <shape arcwidth="20.0" archeight="20.0" xsi:type="roundRect"/>
     </child>
     <child ID="121" label="Experiment result" layerID="1"
-        created="1331861990198" x="98.60693" y="-360.83337" width="84.0"
+        created="1331861990198" x="99.10693" y="-360.83337" width="83.0"
         height="61.18991" strokeWidth="1.0" autoSized="false"
         controlCount="0" arrowState="2" xsi:type="link">
         <strokeColor>#404040</strokeColor>
@@ -2059,10 +2059,9 @@
         <ID1 xsi:type="node">28</ID1>
         <ID2 xsi:type="node">120</ID2>
     </child>
-    <child ID="122"
-        label="Try to make input in a &quot;dA&quot; manner (or sparse)"
-        layerID="1" created="1331863695931" x="20.27362" y="-608.14343"
-        width="262.0" height="26.0" strokeWidth="1.0" autoSized="false" xsi:type="node">
+    <child ID="122" label="Try to make input in a &quot;dA&quot; manner"
+        layerID="1" created="1331863695931" x="100.27362" y="-610.14343"
+        width="198.0" height="23.0" strokeWidth="1.0" autoSized="true" xsi:type="node">
         <fillColor>#FEFEC9</fillColor>
         <strokeColor>#000000</strokeColor>
         <textColor>#000000</textColor>
@@ -2081,9 +2080,10 @@
     </child>
     <child ID="123"
         label="Since it can learn, but with&#xa;bad learned representation"
-        layerID="1" created="1331863730514" x="84.265854" y="-582.6433"
-        width="131.0" height="56.77539" strokeWidth="1.0"
-        autoSized="false" controlCount="0" arrowState="2" xsi:type="link">
+        layerID="1" created="1331863730514" x="112.428314"
+        y="-587.64343" width="130.0" height="61.775818"
+        strokeWidth="1.0" autoSized="false" controlCount="0"
+        arrowState="2" xsi:type="link">
         <strokeColor>#404040</strokeColor>
         <textColor>#404040</textColor>
         <font>Arial-plain-11</font>
@@ -2097,10 +2097,51 @@
             </metadata>
         </metadata-list>
         <URIString>http://vue.tufts.edu/rdf/resource/19445205c0a8025800121e5a7a87237d</URIString>
-        <point1 x="148.73747" y="-526.3679"/>
-        <point2 x="150.79424" y="-582.1433"/>
+        <point1 x="161.58047" y="-526.3676"/>
+        <point2 x="193.27617" y="-587.14343"/>
         <ID1 xsi:type="node">109</ID1>
         <ID2 xsi:type="node">122</ID2>
+    </child>
+    <child ID="124" label="Try to make hidden layer sparse" layerID="1"
+        created="1331954014462" x="-150.72638" y="-607.5654"
+        width="186.0" height="23.0" strokeWidth="1.0" autoSized="true" xsi:type="node">
+        <fillColor>#FEFEC9</fillColor>
+        <strokeColor>#000000</strokeColor>
+        <textColor>#000000</textColor>
+        <font>Arial-plain-12</font>
+        <metadata-list category-list-size="1" other-list-size="0"
+            ontology-list-size="0" RCategoryListSize="0">
+            <ontology-list-string></ontology-list-string>
+            <metadata xsi:type="vue-metadata-element">
+                <value></value>
+                <key>http://vue.tufts.edu/vue.rdfs#none</key>
+                <type>1</type>
+            </metadata>
+        </metadata-list>
+        <URIString>http://vue.tufts.edu/rdf/resource/1ea5f627c0a8025800be0ffe58993891</URIString>
+        <shape arcwidth="20.0" archeight="20.0" xsi:type="roundRect"/>
+    </child>
+    <child ID="125" label="parallel" layerID="1" created="1331954033213"
+        x="-33.661446" y="-585.0654" width="125.31543"
+        height="59.197815" strokeWidth="1.0" autoSized="false"
+        controlCount="0" arrowState="2" xsi:type="link">
+        <strokeColor>#404040</strokeColor>
+        <textColor>#404040</textColor>
+        <font>Arial-plain-11</font>
+        <metadata-list category-list-size="1" other-list-size="0"
+            ontology-list-size="0" RCategoryListSize="0">
+            <ontology-list-string></ontology-list-string>
+            <metadata xsi:type="vue-metadata-element">
+                <value></value>
+                <key>http://vue.tufts.edu/vue.rdfs#none</key>
+                <type>1</type>
+            </metadata>
+        </metadata-list>
+        <URIString>http://vue.tufts.edu/rdf/resource/1ea5f628c0a8025800be0ffe8ab14113</URIString>
+        <point1 x="91.153984" y="-526.3676"/>
+        <point2 x="-33.16145" y="-584.5654"/>
+        <ID1 xsi:type="node">109</ID1>
+        <ID2 xsi:type="node">124</ID2>
     </child>
     <layer ID="1" label="Layer 1" created="1329652491993" x="0.0"
         y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
@@ -2111,7 +2152,7 @@
         <URIString>http://vue.tufts.edu/rdf/resource/958a46b8c0a802580139626cacdaf2b8</URIString>
     </layer>
     <userZoom>1.0</userZoom>
-    <userOrigin x="-768.7264" y="-901.14343"/>
+    <userOrigin x="-746.7264" y="-666.5654"/>
     <presentationBackground>#202020</presentationBackground>
     <PathwayList currentPathway="0" revealerIndex="-1">
         <pathway ID="0" label="&#x7121;&#x6a19;&#x984c;&#x8def;&#x5f91;"
