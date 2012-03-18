@@ -1,14 +1,14 @@
 <!-- Tufts VUE 3.1.2 concept-map (NNResearch.vue) 2012-03-19 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
 <!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/C:/Program%20Files%20(x86)/VUE/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Mon Mar 19 03:39:45 CST 2012 by zys on platform Windows 7 6.1 in JVM 1.6.0_29-b11 -->
+<!-- Do Not Remove: Saved date Mon Mar 19 03:55:53 CST 2012 by zys on platform Windows 7 6.1 in JVM 1.6.0_29-b11 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built March 8 2012 at 1310 by vue on Linux 2.4.21-63.EL i386 JVM 1.5.0_06-b05(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0" label="NNResearch.vue"
     created="1329652491990" x="0.0" y="0.0" width="1.4E-45"
     height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1332099585282" size="110564"
+    <resource referenceCreated="1332100553223" size="114653"
         spec="Z:\gitted\NNResearch.vue" type="1" xsi:type="URLResource">
         <title>NNResearch.vue</title>
         <property key="File" value="Z:\gitted\NNResearch.vue"/>
@@ -2144,10 +2144,10 @@
         <ID2 xsi:type="node">124</ID2>
     </child>
     <child ID="126"
-        label="Experiment result:&#xa;It downgrades to &quot;sparse features&quot;&#xa;only, without protential properties, it&#xa;might because properties shouldn't&#xa;be sparse"
-        layerID="1" created="1332099426787" x="-160.72638" y="-730.5654"
-        width="205.0" height="83.0" strokeWidth="1.0" autoSized="true" xsi:type="node">
-        <fillColor>#FC938D</fillColor>
+        label="Experiment has a gradient equation&#xa;error, fix and retry"
+        layerID="1" created="1332099426787" x="-162.72638" y="-694.5654"
+        width="206.0" height="38.0" strokeWidth="1.0" autoSized="true" xsi:type="node">
+        <fillColor>#FEFEC9</fillColor>
         <strokeColor>#000000</strokeColor>
         <textColor>#000000</textColor>
         <font>Arial-plain-12</font>
@@ -2163,8 +2163,8 @@
         <URIString>http://vue.tufts.edu/rdf/resource/27529576c0a8025800974e4bc5c9fec8</URIString>
         <shape arcwidth="20.0" archeight="20.0" xsi:type="roundRect"/>
     </child>
-    <child ID="127" layerID="1" created="1332099506753" x="-58.503265"
-        y="-648.0654" width="1.2150574" height="41.0" strokeWidth="1.0"
+    <child ID="127" layerID="1" created="1332099506753" x="-59.748398"
+        y="-657.0654" width="2.232708" height="50.0" strokeWidth="1.0"
         autoSized="false" controlCount="0" arrowState="2" xsi:type="link">
         <strokeColor>#404040</strokeColor>
         <textColor>#404040</textColor>
@@ -2179,8 +2179,8 @@
             </metadata>
         </metadata-list>
         <URIString>http://vue.tufts.edu/rdf/resource/27529579c0a8025800974e4b25a29ea2</URIString>
-        <point1 x="-57.788208" y="-607.5654"/>
-        <point2 x="-58.003265" y="-647.5654"/>
+        <point1 x="-58.015686" y="-607.5654"/>
+        <point2 x="-59.248394" y="-656.5654"/>
         <ID1 xsi:type="node">124</ID1>
         <ID2 xsi:type="node">126</ID2>
     </child>
@@ -2205,8 +2205,8 @@
         <shape arcwidth="20.0" archeight="20.0" xsi:type="roundRect"/>
     </child>
     <child ID="129" label="Refined experiment" layerID="1"
-        created="1332099578288" x="-107.95174" y="-777.0654"
-        width="94.0" height="47.0" strokeWidth="1.0" autoSized="false"
+        created="1332099578288" x="-107.72638" y="-777.0654"
+        width="93.0" height="83.0" strokeWidth="1.0" autoSized="false"
         controlCount="0" arrowState="2" xsi:type="link">
         <strokeColor>#404040</strokeColor>
         <textColor>#404040</textColor>
@@ -2221,8 +2221,8 @@
             </metadata>
         </metadata-list>
         <URIString>http://vue.tufts.edu/rdf/resource/2752957ac0a8025800974e4bf4a05faf</URIString>
-        <point1 x="-59.9799" y="-730.5654"/>
-        <point2 x="-61.923565" y="-776.5654"/>
+        <point1 x="-60.201378" y="-694.5654"/>
+        <point2 x="-62.251377" y="-776.5654"/>
         <ID1 xsi:type="node">126</ID1>
         <ID2 xsi:type="node">128</ID2>
     </child>
@@ -2235,7 +2235,7 @@
         <URIString>http://vue.tufts.edu/rdf/resource/958a46b8c0a802580139626cacdaf2b8</URIString>
     </layer>
     <userZoom>1.0</userZoom>
-    <userOrigin x="-746.7264" y="-972.5654"/>
+    <userOrigin x="-746.7264" y="-827.0654"/>
     <presentationBackground>#202020</presentationBackground>
     <PathwayList currentPathway="0" revealerIndex="-1">
         <pathway ID="0" label="&#x7121;&#x6a19;&#x984c;&#x8def;&#x5f91;"
