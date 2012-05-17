@@ -33,7 +33,7 @@
                                     var cir=r.circle(Math.random()*400,Math.random()*400,5);
 //                                    cir.attr({'stroke-width':0});
                                     var dx=Math.random()-0.5, dy=Math.random()-0.5;
-                                    var rmd=Math.sqrt(dx*dx+dy*dy)/(Math.random()*1.5+1);
+                                    var rmd=Math.sqrt(dx*dx+dy*dy)/(Math.random()+0.5);
                                     cir.deltax=dx/rmd;
                                     cir.deltay=dy/rmd;
                                     cir.destroy=cir.remove;
@@ -45,13 +45,13 @@
                                     cir.attr({fill:Raphael.rgb(cir.mr,cir.mg,cir.mb),
                                               'fill-opacity':0});
                                     cir.tick=function(){
-                                            if(cir.ticks<30) {
+                                            if(cir.ticks<50) {
                                                     cir.ticks++;
-                                                    cir.attr({'fill-opacity':cir.ticks*cir.ticks*cir.ticks/27000.0});
+                                                    cir.attr({'fill-opacity':cir.ticks/50.0});
                                             } else { cir.entity=true; cir.attr({stroke:Raphael.rgb(200,0,0),'stroke-width':2});}
                                     };
                                     bullets.addbullet(cir);
-                            },20);
+                            },40);
 
                             window.setInterval(function(){
                                     if (dead) return;
@@ -62,6 +62,10 @@
                                             bullets.clear();
                                             player.dead();
                                             alert('DEAD');
+                                            player.setself(r.circle(200,380,2).attr({'stroke-width':3,stroke:'#00FF00',fill:'#ffffff'}));
+                                            player.x=200;
+                                            player.y=380;
+                                            dead = false;
                                     };
                             },10);
                         });
