@@ -72,6 +72,7 @@ function player__() {
 
     this.setself = function(s) {
         this.sobj = s;
+        keyboard.clear();
     };
 
     this.dead = function() {

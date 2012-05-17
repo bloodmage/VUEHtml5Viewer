@@ -29,7 +29,7 @@
                             var r=Raphael("holder");
                             player.setself(r.circle(200,380,2).attr({'stroke-width':3,stroke:'#00FF00',fill:'#ffffff'}));
                             //Frame
-                            for (var i=0;i<5;i++) servants.addservant(randomservant(r));
+                            for (var i=0;i<5;i++) servants.addservant(targetingservant(r));
                             window.setInterval(function(){
                                     if (dead) return;
                                     bullets.nextmove();
@@ -45,7 +45,7 @@
                                             player.x=200;
                                             player.y=380;
                                             dead = false;
-                                            for (var i=0;i<5;i++) servants.addservant(randomservant(r));
+                                            for (var i=0;i<5;i++) servants.addservant(targetingservant(r));
                                     };
                             },10);
                         });

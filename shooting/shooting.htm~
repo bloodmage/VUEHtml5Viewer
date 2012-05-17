@@ -38,12 +38,14 @@
                                     if (bullets.detectcoll(player.x,player.y)) {
                                             dead = true;
                                             bullets.clear();
+                                            servants.clear();
                                             player.dead();
                                             alert('DEAD');
                                             player.setself(r.circle(200,380,2).attr({'stroke-width':3,stroke:'#00FF00',fill:'#ffffff'}));
                                             player.x=200;
                                             player.y=380;
                                             dead = false;
+                                            for (var i=0;i<5;i++) servants.addservant(randomservant(r));
                                     };
                             },10);
                         });
