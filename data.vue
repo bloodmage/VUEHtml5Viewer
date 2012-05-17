@@ -1,14 +1,14 @@
-<!-- Tufts VUE 3.1.2 concept-map (NNResearch.vue) 2012-04-22 -->
+<!-- Tufts VUE 3.1.2 concept-map (NNResearch.vue) 2012-04-28 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
 <!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/C:/Program%20Files%20(x86)/VUE/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Sun Apr 22 09:37:34 CST 2012 by zys on platform Windows 7 6.1 in JVM 1.6.0_29-b11 -->
+<!-- Do Not Remove: Saved date Sat Apr 28 23:20:06 CST 2012 by zys on platform Windows 7 6.1 in JVM 1.6.0_29-b11 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built March 8 2012 at 1310 by vue on Linux 2.4.21-63.EL i386 JVM 1.5.0_06-b05(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0" label="NNResearch.vue"
     created="1329652491990" x="0.0" y="0.0" width="1.4E-45"
     height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1335058654479" size="162501"
+    <resource referenceCreated="1335626407204" size="162507"
         spec="Z:\gitted\NNResearch.vue" type="1" xsi:type="URLResource">
         <title>NNResearch.vue</title>
         <property key="File" value="Z:\gitted\NNResearch.vue"/>
@@ -3184,6 +3184,47 @@
         <point2 x="1874.5974" y="318.46436"/>
         <ID1 xsi:type="node">154</ID1>
         <ID2 xsi:type="node">181</ID2>
+    </child>
+    <child ID="183"
+        label="A fast learning approach:&#xa;Multiple root hebbian learning,&#xa;Choose 2 points as root, learn points and &#xa;scores correlated with both"
+        layerID="1" created="1335626282610" x="2285.8516" y="317.43457"
+        width="241.0" height="68.0" strokeWidth="1.0" autoSized="true" xsi:type="node">
+        <fillColor>#C1F780</fillColor>
+        <strokeColor>#000000</strokeColor>
+        <textColor>#000000</textColor>
+        <font>Arial-plain-12</font>
+        <metadata-list category-list-size="1" other-list-size="0"
+            ontology-list-size="0" RCategoryListSize="0">
+            <ontology-list-string></ontology-list-string>
+            <metadata xsi:type="vue-metadata-element">
+                <value></value>
+                <key>http://vue.tufts.edu/vue.rdfs#none</key>
+                <type>1</type>
+            </metadata>
+        </metadata-list>
+        <URIString>http://vue.tufts.edu/rdf/resource/f9899dd0c0a8025801c0a51c4ce6f0a6</URIString>
+        <shape arcwidth="20.0" archeight="20.0" xsi:type="roundRect"/>
+    </child>
+    <child ID="184" layerID="1" created="1335626392162" x="2172.3516"
+        y="350.93457" width="114.0" height="1.0" strokeWidth="1.0"
+        autoSized="false" controlCount="0" arrowState="2" xsi:type="link">
+        <strokeColor>#404040</strokeColor>
+        <textColor>#404040</textColor>
+        <font>Arial-plain-11</font>
+        <metadata-list category-list-size="1" other-list-size="0"
+            ontology-list-size="0" RCategoryListSize="0">
+            <ontology-list-string></ontology-list-string>
+            <metadata xsi:type="vue-metadata-element">
+                <value></value>
+                <key>http://vue.tufts.edu/vue.rdfs#none</key>
+                <type>1</type>
+            </metadata>
+        </metadata-list>
+        <URIString>http://vue.tufts.edu/rdf/resource/f9899dd0c0a8025801c0a51c5e4a126c</URIString>
+        <point1 x="2172.8516" y="351.43457"/>
+        <point2 x="2285.8516" y="351.43457"/>
+        <ID1 xsi:type="node">181</ID1>
+        <ID2 xsi:type="node">183</ID2>
     </child>
     <layer ID="1" label="Layer 1" created="1329652491993" x="0.0"
         y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
