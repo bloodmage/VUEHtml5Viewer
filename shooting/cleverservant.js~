@@ -26,8 +26,11 @@ function tickreservoir(x,y) {
         }
     }
 }
+var globalid, activeid = 0;
 function cleverservant(r,angle) {
-    var reser = new reservoir(150,10,10,0,0.1,0.003);
+    var myid = globalid;
+    globalid++;
+    var reser = new reservoir(150,10,10,0,0.1,0.005);
     var s=r.circle(200,50,10);
     s.deltax=Math.cos(angle);
     s.deltay=Math.sin(angle);
@@ -46,7 +49,9 @@ function cleverservant(r,angle) {
             if (s.attr('cy')<0&&s.deltay<0) s.deltay=-s.deltay;
         }
         if (bullets.count()>80) return true;
-        if (Math.random()>0.05) return true;
+        if (activeid!=myid) return true;
+        activeid ++;
+        if (activeid==globalid) activeid=0;
         var st1 = reser.predictstage1();
         var st2 = reser.predictstage2(st1);
         var wpred = reser.predictstage3(st2,0,5,400);
@@ -78,6 +83,8 @@ function cleverservant(r,angle) {
     s.destroy = function() {
         s.remove();
         tick = 0;
+        globalid = 0;
+        activeid=0;
         cleverbullet.splice(0,cleverbullet.length);
     };
     return s;
