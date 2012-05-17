@@ -33,6 +33,8 @@
                             //Frame
                             for (var i=0;i<8;i++) servants.addservant(cleverservant(r,Math.PI*(i+1)/9));
                             var stp = Date.now();
+                            if (localStorage['besttime']!=null)
+                                shootmodel.besttime(parseFloat(localStorage['besttime']));
                             window.setInterval(function(){
                                     if (dead) return;
                                     bullets.nextmove();
@@ -41,7 +43,10 @@
                                     tickreservoir(player.x/400,player.y/400);
                                     shootmodel.time(Date.now()-stp);
                                     if (shootmodel.time()>shootmodel.besttime())
+                                    {
                                         shootmodel.besttime(shootmodel.time());
+                                        localStorage.besttime=shootmodel.besttime().toString();
+                                    }
                                     if (bullets.detectcoll(player.x,player.y)) {
                                             dead = true;
                                             bullets.clear();
