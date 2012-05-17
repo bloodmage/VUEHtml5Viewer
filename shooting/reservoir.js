@@ -11,7 +11,7 @@ function reservoir(nodes,inputs,outputs,rbias,sparse,rout) {
         var selfv;
         for (var j=0;j<nodes;j++)
             if(i==j) { selfv = Math.random()*4.5+0.3; tw.push(selfv); }
-            else tw.push((Math.random()-0.5)/nodes*200);
+            else tw.push((Math.random()-0.5)/nodes*300);
         weight.push(tw);
         bias.push(-selfv*sparse-Math.log(1/sparse-1));
     }
@@ -19,7 +19,7 @@ function reservoir(nodes,inputs,outputs,rbias,sparse,rout) {
     {
         var tw = [];
         for (var j=0;j<nodes;j++)
-            tw.push((Math.random()-0.5)/nodes*200);
+            tw.push((Math.random()-0.5)/nodes*300);
         iw.push(tw);
     }
     for (var i=0;i<outputs;i++)
