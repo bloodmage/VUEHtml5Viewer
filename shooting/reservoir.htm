@@ -15,16 +15,6 @@
                     width: 800px;
                     background: black;
                 }
-                #holder2 {
-
-                    left: 50%;
-                    position: absolute;
-                    top: 60%;
-                    height: 400px;
-                    margin: -200px 0 0 -400px;
-                    width: 800px;
-                    background: black;
-                }
                 #mouseind {
                     position: absolute;
                     height: 10px;
@@ -47,51 +37,36 @@
                      Range: <span data-bind="text: range"></span></div>
                 <div id="mouseind" data-bind="style: {left: predmx(), top: predmy()}"></div>
                 <div id="holder"></div>
-                <div id="holder2"></div>
                 <script>
-                        var cnt = 0, cnt2 = 0;
-                        var state10ago = [];
-                        for (var i=0;i<10;i++)
-                            state10ago.push([Math.random(),Math.random()]);
+                        var cnt2 = 0;
                         window.onload=function() {
-                                var r=Raphael("holder");
-                                var r2=Raphael("holder2");
-                                var reser = new reservoir(300,2,6,0.002,0.1,0.01);
+                                //var r=Raphael("holder");
+                                var reser = new reservoir(1000,10,10,0,0.1,0.0005);
                                 //Use 10 population-coding to represent X, 10 to represent Y
-                                var cstate = reser.state.slice(0);
-                                cstate.push(1);
-                                r2.barchart(10, 10, 800, 400, [cstate], 0, {type: "sharp"});
                                 var vcnt=0;
                                 window.setInterval(function(){
                                     var wmax = $(window).width();
                                     var hmax = $(window).height();
-                                    state10ago.push([shootmodel.mousex()/wmax,shootmodel.mousey()/hmax]);
-                                    reser.tick(state10ago.splice(0,1)[0]);
+                                    var cresult = [];
+                                    for (var i=0;i<10;i++) cresult.push(0);
+                                    reser.buildresult(cresult,0,5,shootmodel.mousex()/wmax);
+                                    reser.buildresult(cresult,5,10,shootmodel.mousey()/hmax);
+                                    reser.tick(cresult);
                                     vcnt++;
-                                    cnt++;
-                                    if (cnt>10) { cnt=0;
-                                            r2.clear();
-                                            var cstate = reser.state.slice(0);
-                                            cstate.push(1);
-                                            r2.barchart(10, 10, 800, 400, [cstate], 0, {type: "sharp"}); }
                                     var st1 = reser.predictstage1();
                                     var st2 = reser.predictstage2(st1);
                                     shootmodel.range(wmax.toString()+" "+hmax.toString());
-                                    var wpred = reser.predictstage3(st2,0,3,wmax);
-                                    var hpred = reser.predictstage3(st2,3,6,hmax);
+                                    var wpred = reser.predictstage3(st2,0,5,wmax);
+                                    var hpred = reser.predictstage3(st2,5,10,hmax);
                                     shootmodel.predmx(wpred);
                                     shootmodel.predmy(hpred);
-                                    var cresult = [];
-                                    for (var i=0;i<20;i++) cresult.push(0);
-                                    reser.buildresult(cresult,0,3,shootmodel.mousex()/wmax);
-                                    reser.buildresult(cresult,3,6,shootmodel.mousey()/hmax);
-                                    cnt2++;
-                                    if (cnt2>5) { cnt2 = 0;
+                                    /*cnt2++;
+                                    if (cnt2>0) { cnt2 = 0;
                                     r.clear();
-                                    r.barchart(10,10,800,400,[st2,cresult],0,{type:"sharp"}); }
+                                    r.barchart(10,10,800,400,[reser.state],0,{type:"sharp"}); }*/
                                     reser.postadjust(st1,st2,cresult);
                                     oneframe();
-                                }, 15);
+                                }, 5);
                         };
                 </script>
                 <!-- Simple usage: predict mouse position -->

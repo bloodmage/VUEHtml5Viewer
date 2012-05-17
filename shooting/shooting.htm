@@ -23,18 +23,21 @@
                 <script src="shooting.js"></script>
                 <script src="servant.js"></script>
                 <script src="player.js"></script>
+                <script src="reservoir.js"></script>
+                <script src="cleverservant.js"></script>
                 <script>
                         var dead = false;
                         Raphael(function() {
                             var r=Raphael("holder");
                             player.setself(r.circle(200,380,2).attr({'stroke-width':3,stroke:'#00FF00',fill:'#ffffff'}));
                             //Frame
-                            for (var i=0;i<5;i++) servants.addservant(targetingservant(r));
+                            for (var i=0;i<5;i++) servants.addservant(cleverservant(r));
                             window.setInterval(function(){
                                     if (dead) return;
                                     bullets.nextmove();
                                     servants.tick();
                                     player.tick();
+                                    tickreservoir(player.x/400,player.y/400);
                                     if (bullets.detectcoll(player.x,player.y)) {
                                             dead = true;
                                             bullets.clear();
@@ -45,7 +48,7 @@
                                             player.x=200;
                                             player.y=380;
                                             dead = false;
-                                            for (var i=0;i<5;i++) servants.addservant(targetingservant(r));
+                                            for (var i=0;i<5;i++) servants.addservant(cleverservant(r));
                                     };
                             },10);
                         });
