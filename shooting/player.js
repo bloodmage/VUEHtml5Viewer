@@ -27,6 +27,10 @@ var keyboard = function(window) {
 
             return false;
         }
+
+        keyboard.clear = function() {
+            keyboard._keys = {};
+        };
     }
 
     return keyboard;
@@ -37,19 +41,20 @@ function player__() {
     var t = this;
     this.x = 200;
     this.y = 380;
+    var speed = 3;
     this.tick = function() {
         var xf = 0, yf = 0;
         if (keyboard.isPressed('w')) {
-            yf -= 1.0;
+            yf -= speed;
         }
         if (keyboard.isPressed('a')) {
-            xf -= 1.0;
+            xf -= speed;
         }
         if (keyboard.isPressed('s')) {
-            yf += 1.0;
+            yf += speed;
         }
         if (keyboard.isPressed('d')) {
-            xf += 1.0;
+            xf += speed;
         }
 
         var nx=t.x+xf, ny=t.y+yf;
@@ -71,6 +76,7 @@ function player__() {
 
     this.dead = function() {
         this.sobj.remove();
+        keyboard.clear();
     }
 }
 var player = new player__();

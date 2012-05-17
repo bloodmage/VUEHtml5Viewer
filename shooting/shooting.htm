@@ -62,6 +62,10 @@
                                             bullets.clear();
                                             player.dead();
                                             alert('DEAD');
+                                            player.setself(r.circle(200,380,2).attr({'stroke-width':3,stroke:'#00FF00',fill:'#ffffff'}));
+                                            player.x=200;
+                                            player.y=380;
+                                            dead = false;
                                     };
                             },10);
                         });
