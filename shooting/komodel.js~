@@ -5,7 +5,8 @@ var shootmodel = {
     mousex:ko.observable(0.0),
     mousey:ko.observable(0.0),
     predmx:ko.observable(0.0),
-    predmy:ko.observable(0.0)
+    predmy:ko.observable(0.0),
+    range:ko.observable('')
 };
 $(function(){ko.applyBindings(shootmodel);});
 (function() {
