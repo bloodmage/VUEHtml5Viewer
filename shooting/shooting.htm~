@@ -23,8 +23,8 @@
                 <script src="shooting.js"></script>
                 <script src="servant.js"></script>
                 <script src="player.js"></script>
-                <script src="cleverservant.js"></script>
                 <script src="reservoir.js"></script>
+                <script src="cleverservant.js"></script>
                 <script>
                         var dead = false;
                         Raphael(function() {
