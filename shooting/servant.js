@@ -99,7 +99,7 @@ function targetingservant(r) {
     s.deltay=dy/rmd;
     //Make color
     s.attr({fill:Raphael.rgb(Math.random()*64+190,Math.random()*64+190,Math.random()*64+190),'fill-opacity':0.3});
-    s.state = Math.random()*5+20;
+    s.state = Math.random()*5+35;
     s.tick = function(onboundary) {
         if (onboundary) {
             if (s.attr('cx')>400&&s.deltax>0) s.deltax=-s.deltax;
@@ -133,7 +133,7 @@ function targetingservant(r) {
             };
             bullets.addbullet(cir);
 
-            s.state = Math.random()*5+20;
+            s.state = Math.random()*5+35;
         }
         return true;
     };
