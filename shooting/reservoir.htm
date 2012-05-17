@@ -21,28 +21,91 @@
                 <script src="knockout-2.1.0.js"></script>
                 <script src="jquery-1.7.2.min.js"></script>
                 <script src="komodel.js"></script>
-                <div>FPS: <span data-bind="text: fpscount">0</span> <br/></div>
+                <div>FPS: <span data-bind="text: fpscount">0</span>, <br/>
+                     MouseX: <span data-bind="text: mousex"></span>, <br/>
+                     MouseY: <span data-bind="text: mousey"></span>, <br/>
+                     PredMouseX: <span data-bind="text: predmx"></span>, <br/>
+                     PredMouseY: <span data-bind="text: predmy"></span>, <br/>
+                     Range: <span data-bind="text: range"></span></div>
                 <div id="holder"></div>
                 <script>
                         var cnt = 0;
                         window.onload=function() {
                                 var r=Raphael("holder");
-                                var reser = new reservoir(200,1,1,0.001,0.1,0.0001);
-
+                                var reser = new reservoir(500,2,20,0.002,0.1,0.01);
+                                //Use 10 population-coding to represent X, 10 to represent Y
                                 var cstate = reser.state.slice(0);
                                 cstate.push(1);
                                 r.barchart(10, 10, 800, 400, [cstate], 0, {type: "sharp"});
+                                var vcnt=0;
                                 window.setInterval(function(){
-                                    reser.tick([Math.random()]);
+                                    var wmax = $(window).width();
+                                    var hmax = $(window).height();
+                                    reser.tick([shootmodel.mousex()/wmax,shootmodel.mousey()/hmax]);
+                                    vcnt++;
                                     cnt++;
-                                    if (cnt>2) { cnt=0;
+                                    if (cnt>5) { /*cnt=0;
                                             r.clear();
                                             var cstate = reser.state.slice(0);
                                             cstate.push(1);
-                                            r.barchart(10, 10, 800, 400, [cstate], 0, {type: "sharp"}); }
+                                            r.barchart(10, 10, 800, 400, [cstate], 0, {type: "sharp"}); */}
+                                    var st1 = reser.predictstage1();
+                                    var st2 = reser.predictstage2(st1);
+                                    shootmodel.range(wmax.toString()+" "+hmax.toString());
+                                    var wpred = reser.predictstage3(st2,0,10,wmax);
+                                    var hpred = reser.predictstage3(st2,10,20,hmax);
+                                    shootmodel.predmx(wpred);
+                                    shootmodel.predmy(hpred);
+                                    var cresult = [];
+                                    for (var i=0;i<20;i++) cresult.push(0);
+                                    reser.buildresult(cresult,0,10,shootmodel.mousex()/wmax);
+                                    reser.buildresult(cresult,10,20,shootmodel.mousey()/hmax);
+                                    r.clear();
+                                    r.barchart(10,10,800,400,[st2,cresult],0,{type:"sharp"});
+                                    reser.postadjust(st1,st2,cresult);
                                     oneframe();
-                                }, 10);
+                                }, 15);
                         };
+                </script>
+                <!-- Simple usage: predict mouse position -->
+                <script language="JavaScript1.2">
+                    <!--
+    
+                    // Detect if the browser is IE or not.
+                    // If it is not IE, we assume that the browser is NS.
+                    var IE = document.all?true:false
+
+                    // If NS -- that is, !IE -- then set up for mouse capture
+                    if (!IE) document.captureEvents(Event.MOUSEMOVE)
+    
+                    // Set-up to use getMouseXY function onMouseMove
+                    document.onmousemove = getMouseXY;
+    
+                    // Temporary variables to hold mouse x-y pos.s
+                    var tempX = 0
+                    var tempY = 0
+    
+                    // Main function to retrieve mouse x-y pos.s
+
+                    function getMouseXY(e) {
+                      if (IE) { // grab the x-y pos.s if browser is IE
+                        tempX = event.clientX + document.body.scrollLeft
+                        tempY = event.clientY + document.body.scrollTop
+                      } else {  // grab the x-y pos.s if browser is NS
+                        tempX = e.pageX
+                        tempY = e.pageY
+                      }  
+                      // catch possible negative values in NS4
+                      if (tempX < 0){tempX = 0}
+                      if (tempY < 0){tempY = 0}  
+                      // show the position values in the form named Show
+                      // in the text fields named MouseX and MouseY
+                      shootmodel.mousex(tempX);
+                      shootmodel.mousey(tempY);
+                      return true
+                    }
+
+                    //-->
                 </script>
         </body>
 </html>

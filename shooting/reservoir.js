@@ -10,7 +10,7 @@ function reservoir(nodes,inputs,outputs,rbias,sparse,rout) {
         var tw = [];
         var selfv;
         for (var j=0;j<nodes;j++)
-            if(i==j) { selfv = Math.random()*5.0+0.3; tw.push(selfv); }
+            if(i==j) { selfv = Math.random()*4.5+0.3; tw.push(selfv); }
             else tw.push((Math.random()-0.5)/nodes*200);
         weight.push(tw);
         bias.push(-selfv*sparse-Math.log(1/sparse-1));
@@ -92,18 +92,20 @@ function reservoir(nodes,inputs,outputs,rbias,sparse,rout) {
         var scale = 0;
         if (lp<0) scale = 1; else if (rp<0) scale = 0; else scale = Math.atan(rp/lp)/Math.PI*2;
         //Decide point-of-range
-        var percent=(scale+lp-0.5)/(rrange-lrange-1);
+        var percent=(scale+lpt-lrange-0.5)/(rrange-lrange-2);
         if (percent<0) percent=0;
         if (percent>1) percent=1;
         return scaledrange*percent;
     };
     this.buildresult = function(gostate,lrange,rrange,percent) {
+        if (percent>1) percent=1;
         for (var i=lrange;i<rrange;i++)
             gostate[i] = 0.01;
-        var posi=percent*(rrange-lrange-1)+0.5;
+        var posi=percent*(rrange-lrange-2)+0.5;
         var lposi=Math.floor(posi);
         posi -= lposi;
         posi *= Math.PI/2;
+        lposi+=lrange;
         gostate[lposi]+=0.98*Math.cos(posi);
         gostate[lposi+1]+=0.98*Math.sin(posi);
         return gostate;

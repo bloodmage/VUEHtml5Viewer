@@ -1,7 +1,12 @@
 var shootmodel = {
     bulletcount:ko.observable(0.0),
     fpscount:ko.observable(0.0),
-    servantcount:ko.observable(0.0)
+    servantcount:ko.observable(0.0),
+    mousex:ko.observable(0.0),
+    mousey:ko.observable(0.0),
+    predmx:ko.observable(0.0),
+    predmy:ko.observable(0.0),
+    range:ko.observable('')
 };
 $(function(){ko.applyBindings(shootmodel);});
 (function() {
