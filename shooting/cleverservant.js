@@ -17,7 +17,7 @@ function tickreservoir(x,y) {
             i--;
             continue;
         }
-        if (Math.random()>0.9&&mayhit(cleverbullet[i])) {
+        if (Math.random()>0.95&&mayhit(cleverbullet[i])) {
             cresult = [];
             for (var j=0;j<10;j++) cresult.push(0);
             reser.buildresult(cresult,0,5,player.x/400);
@@ -27,7 +27,7 @@ function tickreservoir(x,y) {
     }
 }
 function cleverservant(r,angle) {
-    var reser = new reservoir(150,10,10,0,0.1,0.003);
+    var reser = new reservoir(150,10,10,0,0.1,0.005);
     var s=r.circle(200,50,10);
     s.deltax=Math.cos(angle);
     s.deltay=Math.sin(angle);

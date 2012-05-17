@@ -17,7 +17,7 @@ function tickreservoir(x,y) {
             i--;
             continue;
         }
-        if (Math.random()>0.9&&mayhit(cleverbullet[i])) {
+        if (Math.random()>0.95&&mayhit(cleverbullet[i])) {
             cresult = [];
             for (var j=0;j<10;j++) cresult.push(0);
             reser.buildresult(cresult,0,5,player.x/400);
@@ -70,7 +70,7 @@ function cleverservant(r,angle) {
             if(cir.ticks<50) {
                 cir.ticks++;
                 cir.attr({'fill-opacity':cir.ticks/50.0});
-            } else { cir.entity=false; cir.attr({stroke:Raphael.rgb(200,0,0),'stroke-width':2});}
+            } else { cir.entity=true; cir.attr({stroke:Raphael.rgb(200,0,0),'stroke-width':2});}
         };
         bullets.addbullet(cir);
         return true;
