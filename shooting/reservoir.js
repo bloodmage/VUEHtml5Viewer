@@ -19,7 +19,7 @@ function reservoir(nodes,inputs,outputs,rbias,sparse,rout) {
     {
         var tw = [];
         for (var j=0;j<nodes;j++)
-            tw.push((Math.random()-0.5)/nodes);
+            tw.push((Math.random()-0.5)/nodes*200);
         iw.push(tw);
     }
     for (var i=0;i<outputs;i++)
@@ -74,12 +74,10 @@ function reservoir(nodes,inputs,outputs,rbias,sparse,rout) {
     };
     this.predictstage3 = function(ostate,lrange,rrange,scaledrange) {
         //Find biggest value point within [lrange,rrange)
-        var lpt = lrange, mean = 0;
+        var lpt = lrange;
         for (var i=lrange;i<rrange;i++) {
             if (ostate[lpt]<ostate[i]) lpt = i;
-            mean += ostate[i];
         }
-        mean /= rrange-lrange;
         //Find skew relationship with others
         var rng = 1;
         if (lpt==rrange-1) rng = -1;
@@ -88,7 +86,7 @@ function reservoir(nodes,inputs,outputs,rbias,sparse,rout) {
             if (ostate[lpt-1]>ostate[lpt+1]) rng = -1; else rng = 1;
         if (rng==-1) lpt --;
         //Use arctan to test scale
-        var lp = ostate[lpt] - mean; rp = ostate[lpt+1] - mean;
+        var lp = ostate[lpt] - 0.01; rp = ostate[lpt+1] - 0.01;
         var scale = 0;
         if (lp<0) scale = 1; else if (rp<0) scale = 0; else scale = Math.atan(rp/lp)/Math.PI*2;
         //Decide point-of-range

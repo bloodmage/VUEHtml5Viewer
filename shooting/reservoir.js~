@@ -19,7 +19,7 @@ function reservoir(nodes,inputs,outputs,rbias,sparse,rout) {
     {
         var tw = [];
         for (var j=0;j<nodes;j++)
-            tw.push((Math.random()-0.5)/nodes);
+            tw.push((Math.random()-0.5)/nodes*200);
         iw.push(tw);
     }
     for (var i=0;i<outputs;i++)
@@ -95,7 +95,7 @@ function reservoir(nodes,inputs,outputs,rbias,sparse,rout) {
         var percent=(scale+lpt-lrange-0.5)/(rrange-lrange-2);
         if (percent<0) percent=0;
         if (percent>1) percent=1;
-        return percent;
+        return scaledrange*percent;
     };
     this.buildresult = function(gostate,lrange,rrange,percent) {
         if (percent>1) percent=1;

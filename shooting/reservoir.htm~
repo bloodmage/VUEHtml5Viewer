@@ -15,6 +15,12 @@
                     width: 800px;
                     background: black;
                 }
+                #mouseind {
+                    position: absolute;
+                    height: 10px;
+                    width: 10px;
+                    background: green;
+                }
                 </style>
         </head>
         <body>
@@ -27,12 +33,16 @@
                      PredMouseX: <span data-bind="text: predmx"></span>, <br/>
                      PredMouseY: <span data-bind="text: predmy"></span>, <br/>
                      Range: <span data-bind="text: range"></span></div>
+                <div id="mouseind" data-bind="style: {left: predmx(), top: predmy()}"></div>
                 <div id="holder"></div>
                 <script>
                         var cnt = 0;
+                        var state10ago = [];
+                        for (var i=0;i<10;i++)
+                            state10ago.push([Math.random(),Math.random()]);
                         window.onload=function() {
                                 var r=Raphael("holder");
-                                var reser = new reservoir(2000,2,20,0.002,0.1,0.01);
+                                var reser = new reservoir(200,2,20,0.002,0.1,0.001);
                                 //Use 10 population-coding to represent X, 10 to represent Y
                                 var cstate = reser.state.slice(0);
                                 cstate.push(1);
@@ -41,7 +51,8 @@
                                 window.setInterval(function(){
                                     var wmax = $(window).width();
                                     var hmax = $(window).height();
-                                    reser.tick([shootmodel.mousex()/wmax,shootmodel.mousey()/hmax]);
+                                    state10ago.push([shootmodel.mousex()/wmax,shootmodel.mousey()/hmax]);
+                                    reser.tick(state10ago.splice(0,1)[0]);
                                     vcnt++;
                                     cnt++;
                                     if (cnt>5) { /*cnt=0;
@@ -60,8 +71,9 @@
                                     for (var i=0;i<20;i++) cresult.push(0);
                                     reser.buildresult(cresult,0,10,shootmodel.mousex()/wmax);
                                     reser.buildresult(cresult,10,20,shootmodel.mousey()/hmax);
+                                    if (cnt>5) { cnt = 0;
                                     r.clear();
-                                    r.barchart(10,10,800,400,[st2,cresult],0,{type:"sharp"});
+                                    r.barchart(10,10,800,400,[st2,cresult],0,{type:"sharp"}); }
                                     reser.postadjust(st1,st2,cresult);
                                     oneframe();
                                 }, 15);
