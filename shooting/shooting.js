@@ -27,6 +27,8 @@ function bullets__() {
             bullets[i].attr('cy',ny);
             bullets[i].tick();
         }
+        shootmodel.bulletcount(bullets.length);
+        oneframe();
     };
     this.clear=function() {
         for(var i=0;i<bullets.length;i++) bullets[i].destroy();

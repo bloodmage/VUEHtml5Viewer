@@ -16,14 +16,17 @@
                 </style>
         </head>
         <body>
+                <script src="knockout-2.1.0.js"></script>
+                <script src="jquery-1.7.2.min.js"></script>
+                <script src="komodel.js"></script>
                 <script src="raphael.js"></script>
                 <script src="shooting.js"></script>
                 <script>
-
                         Raphael(function() {
                             var r=Raphael("holder");
                             window.setInterval(function(){
                                     var cir=r.circle(Math.random()*400,Math.random()*400,5);
+                                    cir.attr({'stroke-width':0});
                                     var dx=Math.random()-0.5, dy=Math.random()-0.5;
                                     var rmd=Math.sqrt(dx*dx+dy*dy)/(Math.random()*2+1);
                                     cir.deltax=dx/rmd;
@@ -43,7 +46,7 @@
                                             } else cir.entity=true;
                                     };
                                     bullets.addbullet(cir);
-                            },10);
+                            },40);
 
                             window.setInterval(function(){
                                     bullets.nextmove();
@@ -51,6 +54,8 @@
                         });
                         
                 </script>
+                <div>Bullets: <span data-bind="text: bulletcount">0</span>, FPS: <span data-bind="text: fpscount">0</span> </div>
+                
                 <div id="holder"></div>
         </body>
 </html>
