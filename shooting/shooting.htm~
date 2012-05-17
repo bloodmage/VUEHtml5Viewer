@@ -60,7 +60,7 @@
                                             dead = false;
                                             for (var i=0;i<8;i++) servants.addservant(cleverservant(r,Math.PI*(i+1)/9));
                                     };
-                            },10);
+                            },30);
                         });
                         
                 </script>

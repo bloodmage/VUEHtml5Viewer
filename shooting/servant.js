@@ -81,7 +81,6 @@ function randomservant(r) {
                     cir.attr({'fill-opacity':cir.ticks/50.0});
                 } else { cir.entity=true; cir.attr({stroke:Raphael.rgb(200,0,0),'stroke-width':2});}
             };
-            bullets.addbullet(cir);
 
             s.state = Math.random()*5+20;
         }

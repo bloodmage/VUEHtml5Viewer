@@ -41,7 +41,7 @@ function player__() {
     var t = this;
     this.x = 200;
     this.y = 380;
-    var speed = 2;
+    var speed = 4;
     this.tick = function() {
         var xf = 0, yf = 0;
         if (keyboard.isPressed('w')) {

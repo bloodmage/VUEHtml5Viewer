@@ -108,7 +108,7 @@ function reservoir(nodes,inputs,outputs,rbias,sparse,rout) {
         for (var i=0;i<outputs;i++) delta.push(gostate[i]-ostate[i]);
         for (var j=0;j<outputs;j++) {
             for (var i=0;i<nodes;i++)
-                this.ow[j][i] += rout * state[i] * delta[j];
+                this.ow[j][i] = this.ow[j][i]*0.999 + rout * state[i] * delta[j];
             this.obias[j] += rout * delta[j];
         }
     };

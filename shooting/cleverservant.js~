@@ -3,7 +3,7 @@ var tick = 0;
 function mayhit(bdata) {
     var time=tick-bdata[0];
     var bx=bdata[3][0], by=bdata[3][1];
-    var ldist = ((bx-player.x)*(bx-player.x)+(by-player.y)*(by-player.y))/6.25;
+    var ldist = ((bx-player.x)*(bx-player.x)+(by-player.y)*(by-player.y))/16;
     if (ldist>(time-0.5)*(time-0.5) && ldist<(time+0.5)*(time+0.5)) return true;
     else return false;
 }
@@ -33,10 +33,10 @@ var globalid=0, activeid = 0;
 function cleverservant(r,angle) {
     var myid = globalid;
     globalid++;
-    var reser = new reservoir(100,10,10,0,0.1,0.01);
+    var reser = new reservoir(200,10,10,0,0.5,0.01);
     var s=r.circle(200,50,10);
-    s.deltax=Math.cos(angle)/3;
-    s.deltay=Math.sin(angle)/3;
+    s.deltax=Math.cos(angle);
+    s.deltay=0;/*Math.sin(angle)/1000;*/
     //Make color
     s.attr({fill:Raphael.rgb(Math.random()*64+190,Math.random()*64+190,Math.random()*64+190),'fill-opacity':0.3});
     s.tick = function(onboundary) {
@@ -51,19 +51,47 @@ function cleverservant(r,angle) {
             if (s.attr('cx')<0&&s.deltax<0) s.deltax=-s.deltax;
             if (s.attr('cy')<0&&s.deltay<0) s.deltay=-s.deltay;
         }
-        if (bullets.count()>80) return true;
+        /*if (tick%60==59) {
+            var cir=r.circle(s.attr('cx'),s.attr('cy'),5);
+            var dx=0, dy=1.0;
+            var rmd=Math.sqrt(dx*dx+dy*dy+0.0001)/5;
+            cir.deltax=dx/rmd;
+            cir.deltay=dy/rmd;
+            cir.destroy=cir.remove;
+            cir.entity=false;
+            cir.ticks=0;
+            cir.mr=Math.random()*64+190;
+            cir.mg=Math.random()*64+190;
+            cir.mb=Math.random()*64+190;
+            cir.attr({fill:Raphael.rgb(cir.mr,cir.mg,cir.mb),
+                      'fill-opacity':0});
+            cir.tick=function(){
+                if(cir.ticks<15) {
+                    cir.ticks++;
+                    cir.attr({'fill-opacity':cir.ticks/15.0});
+                } else { cir.entity=false; cir.attr({stroke:Raphael.rgb(200,0,0),'stroke-width':2});}
+            };
+            bullets.addbullet(cir);
+        }*/
+//        if (bullets.count()>140) return true;
         if (activeid!=myid) return true;
         activeid ++;
         if (activeid==globalid) activeid=0;
+        if (Math.random()>0.1) return true;
         var st1 = reser.predictstage1();
         var st2 = reser.predictstage2(st1);
         var wpred = reser.predictstage3(st2,0,5,400);
         var hpred = reser.predictstage3(st2,5,10,400);
+        /*cresult = [];
+        for (var j=0;j<10;j++) cresult.push(0);
+        reser.buildresult(cresult,0,5,player.x/400);
+        reser.buildresult(cresult,5,10,player.y/400);
+        reser.postadjust(st1,st2,cresult);*/
         cleverbullet.push([tick,st1,st2,[wpred,hpred],reser]);
         //Make a bullet
         var cir=r.circle(s.attr('cx'),s.attr('cy'),5);
         var dx=wpred-s.attr('cx'), dy=hpred-s.attr('cy');
-        var rmd=Math.sqrt(dx*dx+dy*dy+0.0001)/2.5;
+        var rmd=Math.sqrt(dx*dx+dy*dy+0.0001)/4;
         cir.deltax=dx/rmd;
         cir.deltay=dy/rmd;
         cir.destroy=cir.remove;
@@ -75,10 +103,10 @@ function cleverservant(r,angle) {
         cir.attr({fill:Raphael.rgb(cir.mr,cir.mg,cir.mb),
                   'fill-opacity':0});
         cir.tick=function(){
-            if(cir.ticks<50) {
+            if(cir.ticks<15) {
                 cir.ticks++;
-                cir.attr({'fill-opacity':cir.ticks/50.0});
-            } else { cir.entity=true; cir.attr({stroke:Raphael.rgb(200,0,0),'stroke-width':2});}
+                cir.attr({'fill-opacity':cir.ticks/15.0});
+            } else { cir.entity=false; cir.attr({stroke:Raphael.rgb(200,0,0),'stroke-width':2});}
         };
         bullets.addbullet(cir);
         return true;

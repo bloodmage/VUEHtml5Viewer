@@ -41,7 +41,7 @@ function player__() {
     var t = this;
     this.x = 200;
     this.y = 380;
-    var speed = 3;
+    var speed = 2;
     this.tick = function() {
         var xf = 0, yf = 0;
         if (keyboard.isPressed('w')) {
@@ -72,6 +72,7 @@ function player__() {
 
     this.setself = function(s) {
         this.sobj = s;
+        keyboard.clear();
     };
 
     this.dead = function() {

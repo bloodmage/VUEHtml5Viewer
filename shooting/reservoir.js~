@@ -105,10 +105,10 @@ function reservoir(nodes,inputs,outputs,rbias,sparse,rout) {
     };
     this.postadjust = function(state,ostate,gostate) {
         var delta = [];
-        for (var i=0;i<outputs;i++) {sgn = gostate[i]-ostate[i]; delta.push(sgn>0?1:-1); }
+        for (var i=0;i<outputs;i++) delta.push(gostate[i]-ostate[i]);
         for (var j=0;j<outputs;j++) {
             for (var i=0;i<nodes;i++)
-                this.ow[j][i] += rout * state[i] * delta[j];
+                this.ow[j][i] = this.ow[j][i]*0.99 + rout * state[i] * delta[j];
             this.obias[j] += rout * delta[j];
         }
     };
