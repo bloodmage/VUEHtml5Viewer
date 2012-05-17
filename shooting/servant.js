@@ -115,7 +115,7 @@ function targetingservant(r) {
             var cir=r.circle(s.attr('cx'),s.attr('cy'),5);
 //            cir.attr({'stroke-width':0});
             var dx=player.x-s.attr('cx'), dy=player.y-s.attr('cy');
-            var rmd=Math.sqrt(dx*dx+dy*dy+0.0001)/(Math.random()*1.5+1.5);
+            var rmd=Math.sqrt(dx*dx+dy*dy+0.0001)/1.5;
             cir.deltax=dx/rmd;
             cir.deltay=dy/rmd;
             cir.destroy=cir.remove;
