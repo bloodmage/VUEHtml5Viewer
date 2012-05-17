@@ -99,7 +99,7 @@ function targetingservant(r) {
     s.deltay=dy/rmd;
     //Make color
     s.attr({fill:Raphael.rgb(Math.random()*64+190,Math.random()*64+190,Math.random()*64+190),'fill-opacity':0.3});
-    s.state = Math.random()*5+20;
+    s.state = Math.random()*5+35;
     s.tick = function(onboundary) {
         if (onboundary) {
             if (s.attr('cx')>400&&s.deltax>0) s.deltax=-s.deltax;
@@ -110,7 +110,8 @@ function targetingservant(r) {
         s.state -= 1;
         if (s.state<0) {
             //Make bullet
-            if (dead) return;
+            if (dead) return false;
+            if (bullets.count()>40) return true;
             var cir=r.circle(s.attr('cx'),s.attr('cy'),5);
 //            cir.attr({'stroke-width':0});
             var dx=player.x-s.attr('cx'), dy=player.y-s.attr('cy');
@@ -133,7 +134,7 @@ function targetingservant(r) {
             };
             bullets.addbullet(cir);
 
-            s.state = Math.random()*5+20;
+            s.state = Math.random()*5+35;
         }
         return true;
     };

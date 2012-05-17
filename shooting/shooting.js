@@ -34,5 +34,6 @@ function bullets__() {
         for(var i=0;i<bullets.length;i++) bullets[i].destroy();
         bullets.splice(0,bullets.length);
     };
+    this.count=function() {return bullets.length;};
 };
 var bullets = new bullets__();

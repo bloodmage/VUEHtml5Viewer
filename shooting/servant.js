@@ -110,7 +110,8 @@ function targetingservant(r) {
         s.state -= 1;
         if (s.state<0) {
             //Make bullet
-            if (dead) return;
+            if (dead) return false;
+            if (bullets.count()>32) return true;
             var cir=r.circle(s.attr('cx'),s.attr('cy'),5);
 //            cir.attr({'stroke-width':0});
             var dx=player.x-s.attr('cx'), dy=player.y-s.attr('cy');
