@@ -1,0 +1,48 @@
+<html>
+        <head>
+                <script src="reservoir.js"></script>
+                <script src="raphael.js"></script>
+                <script src="g.raphael.js"></script>
+                <script src="g.bar.js"></script>
+                <style media="screen">
+                #holder {
+
+                    left: 50%;
+                    position: absolute;
+                    top: 50%;
+                    height: 400px;
+                    margin: -200px 0 0 -400px;
+                    width: 800px;
+                    background: black;
+                }
+                </style>
+        </head>
+        <body>
+                <script src="knockout-2.1.0.js"></script>
+                <script src="jquery-1.7.2.min.js"></script>
+                <script src="komodel.js"></script>
+                <div>FPS: <span data-bind="text: fpscount">0</span> <br/></div>
+                <div id="holder"></div>
+                <script>
+                        var cnt = 0;
+                        window.onload=function() {
+                                var r=Raphael("holder");
+                                var reser = new reservoir(200,1,1,0.0001,0.1,0.0001);
+
+                                var cstate = reser.state.slice(0);
+                                cstate.push(1);
+                                r.barchart(10, 10, 800, 400, [cstate], 0, {type: "sharp"});
+                                window.setInterval(function(){
+                                    reser.tick([Math.random()]);
+                                    cnt++;
+                                    if (cnt>2) { cnt=0;
+                                            r.clear();
+                                            var cstate = reser.state.slice(0);
+                                            cstate.push(1);
+                                            r.barchart(10, 10, 800, 400, [cstate], 0, {type: "sharp"}); }
+                                    oneframe();
+                                }, 10);
+                        };
+                </script>
+        </body>
+</html>
