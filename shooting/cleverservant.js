@@ -31,12 +31,10 @@ function tickreservoir(x,y) {
         }
     }
 }
-function cleverservant(r) {
+function cleverservant(r,angle) {
     var s=r.circle(200,50,10);
-    var dx=Math.random()-0.5,dy=Math.random()-0.5;
-    var rmd=Math.sqrt(dx*dx+dy*dy);
-    s.deltax=dx/rmd;
-    s.deltay=dy/rmd;
+    s.deltax=Math.cos(angle);
+    s.deltay=Math.sin(angle);
     //Make color
     s.attr({fill:Raphael.rgb(Math.random()*64+190,Math.random()*64+190,Math.random()*64+190),'fill-opacity':0.3});
     s.tick = function(onboundary) {
