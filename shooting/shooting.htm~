@@ -24,14 +24,25 @@
                             var r=Raphael("holder");
                             window.setInterval(function(){
                                     var cir=r.circle(Math.random()*400,Math.random()*400,5);
-                                    cir.attr({stroke: '#775533'});
+                                    cir.attr({stroke: Raphael.rgb(0,0,0)});
                                     var dx=Math.random()-0.5, dy=Math.random()-0.5;
-                                    var rmd=Math.sqrt(dx*dx+dy*dy);
+                                    var rmd=Math.sqrt(dx*dx+dy*dy)/(Math.random()*3+1);
                                     cir.deltax=dx/rmd;
                                     cir.deltay=dy/rmd;
                                     cir.destroy=cir.remove;
+                                    cir.entity=false;
+                                    cir.ticks=0;
+                                    cir.mr=Math.random()*64+190;
+                                    cir.mg=Math.random()*64+190;
+                                    cir.mb=Math.random()*64+190;
+                                    cir.tick=function(){
+                                            if(cir.ticks<30) {
+                                                    cir.ticks++;
+                                                    cir.attr({stroke:Raphael.rgb(cir.mr*cir.ticks/30,cir.mg*cir.ticks/30,cir.mb*cir.ticks/30)});
+                                            } else cir.entity=true;
+                                    };
                                     bullets.addbullet(cir);
-                            },1000);
+                            },10);
 
                             window.setInterval(function(){
                                     bullets.nextmove();

@@ -7,7 +7,7 @@ function bullets__() {
         bullets.push(ccl);
     };
     this.detectcoll=function(tx,ty) {
-        for(var i=0;i<bullets.length;i++) {
+        for(var i=0;i<bullets.length;i++) if (bullets[i].entity) {
             var cx=bullets[i].attr('cx'),cy=bullets[i].attr('cy'),r=bullets[i].attr('r');
             if ((cx-tx)*(cx-tx)+(cy-ty)*(cy-ty)>(r+2)*(r+2)) { return true; }
         }
@@ -25,6 +25,7 @@ function bullets__() {
             }
             bullets[i].attr('cx',nx);
             bullets[i].attr('cy',ny);
+            bullets[i].tick();
         }
     };
     this.clear=function() {
