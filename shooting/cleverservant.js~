@@ -17,12 +17,15 @@ function tickreservoir(x,y) {
             i--;
             continue;
         }
-        if (Math.random()>0.95&&mayhit(cleverbullet[i])) {
+        if (mayhit(cleverbullet[i])) {
             cresult = [];
             for (var j=0;j<10;j++) cresult.push(0);
             reser.buildresult(cresult,0,5,player.x/400);
             reser.buildresult(cresult,5,10,player.y/400);
             reser.postadjust(cleverbullet[i][1],cleverbullet[i][2],cresult);
+            cleverbullet.splice(i,1);
+            i--;
+            continue;
         }
     }
 }
@@ -30,7 +33,7 @@ var globalid=0, activeid = 0;
 function cleverservant(r,angle) {
     var myid = globalid;
     globalid++;
-    var reser = new reservoir(100,10,10,0,0.1,0.005);
+    var reser = new reservoir(100,10,10,0,0.1,0.01);
     var s=r.circle(200,50,10);
     s.deltax=Math.cos(angle)/3;
     s.deltay=Math.sin(angle)/3;
