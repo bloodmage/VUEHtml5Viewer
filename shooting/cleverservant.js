@@ -33,10 +33,10 @@ var globalid=0, activeid = 0;
 function cleverservant(r,angle) {
     var myid = globalid;
     globalid++;
-    var reser = new reservoir(200,10,10,0,0.5,0.01);
+    var reser = new reservoir(200,10,10,0,0.2,0.001);
     var s=r.circle(200,50,10);
     s.deltax=Math.cos(angle);
-    s.deltay=0;/*Math.sin(angle)/1000;*/
+    s.deltay=Math.sin(angle);
     //Make color
     s.attr({fill:Raphael.rgb(Math.random()*64+190,Math.random()*64+190,Math.random()*64+190),'fill-opacity':0.3});
     s.tick = function(onboundary) {
