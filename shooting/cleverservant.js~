@@ -81,8 +81,8 @@ function cleverservant(r,angle) {
         if (Math.random()>0.1) return true;
         var st1 = reser.predictstage1();
         var st2 = reser.predictstage2(st1);
-        var wpred = reser.predictstage3(st2,0,5,400);
-        var hpred = reser.predictstage3(st2,5,10,400);
+        var wpred = reser.predictstage3(st2,0,5,400)+Math.random()*30-15;
+        var hpred = reser.predictstage3(st2,5,10,400)+Math.random()*30-15;
         debugpred(wpred,hpred);
         /*cresult = [];
         for (var j=0;j<10;j++) cresult.push(0);

@@ -108,7 +108,7 @@ function cleverservant(r,angle) {
             if(cir.ticks<15) {
                 cir.ticks++;
                 cir.attr({'fill-opacity':cir.ticks/15.0});
-            } else { cir.entity=false; cir.attr({stroke:Raphael.rgb(200,0,0),'stroke-width':2});}
+            } else { cir.entity=true; cir.attr({stroke:Raphael.rgb(200,0,0),'stroke-width':2});}
         };
         bullets.addbullet(cir);
         //cir.remove();
