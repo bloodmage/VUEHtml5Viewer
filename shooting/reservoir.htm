@@ -40,8 +40,8 @@
                 <script>
                         var cnt2 = 0;
                         window.onload=function() {
-                                //var r=Raphael("holder");
-                                var reser = new reservoir(1000,10,10,0,0.1,0.0005);
+                                var r=Raphael("holder");
+                                var reser = new reservoir(200,10,10,0.01,0.5,0.01);
                                 //Use 10 population-coding to represent X, 10 to represent Y
                                 var vcnt=0;
                                 window.setInterval(function(){
@@ -60,10 +60,10 @@
                                     var hpred = reser.predictstage3(st2,5,10,hmax);
                                     shootmodel.predmx(wpred);
                                     shootmodel.predmy(hpred);
-                                    /*cnt2++;
+                                    cnt2++;
                                     if (cnt2>0) { cnt2 = 0;
                                     r.clear();
-                                    r.barchart(10,10,800,400,[reser.state],0,{type:"sharp"}); }*/
+                                    r.barchart(10,10,800,400,[reser.state],0,{type:"sharp"}); }
                                     reser.postadjust(st1,st2,cresult);
                                     oneframe();
                                 }, 5);

@@ -23,6 +23,7 @@ function tickreservoir(x,y) {
             reser.buildresult(cresult,0,5,player.x/400);
             reser.buildresult(cresult,5,10,player.y/400);
             reser.postadjust(cleverbullet[i][1],cleverbullet[i][2],cresult);
+            debuglearn(player.x,player.y);
             cleverbullet.splice(i,1);
             i--;
             continue;
@@ -33,7 +34,7 @@ var globalid=0, activeid = 0;
 function cleverservant(r,angle) {
     var myid = globalid;
     globalid++;
-    var reser = new reservoir(200,10,10,0,0.5,0.0001);
+    var reser = new reservoir(200,10,10,0.0005,0.5,0.0003);
     var s=r.circle(200,50,10);
     s.deltax=Math.cos(angle);
     s.deltay=Math.sin(angle);
@@ -42,8 +43,8 @@ function cleverservant(r,angle) {
     s.tick = function(onboundary) {
         var cresult = [];
         for (var i=0;i<10;i++) cresult.push(0);
-        reser.buildresult(cresult,0,5,player.x/400);
-        reser.buildresult(cresult,5,10,player.y/400);
+        reser.buildresult(cresult,0,5,player.x/400.0);
+        reser.buildresult(cresult,5,10,player.y/400.0);
         reser.tick(cresult);
         if (onboundary) {
             if (s.attr('cx')>400&&s.deltax>0) s.deltax=-s.deltax;
@@ -82,6 +83,7 @@ function cleverservant(r,angle) {
         var st2 = reser.predictstage2(st1);
         var wpred = reser.predictstage3(st2,0,5,400);
         var hpred = reser.predictstage3(st2,5,10,400);
+        debugpred(wpred,hpred);
         /*cresult = [];
         for (var j=0;j<10;j++) cresult.push(0);
         reser.buildresult(cresult,0,5,player.x/400);
@@ -89,7 +91,7 @@ function cleverservant(r,angle) {
         reser.postadjust(st1,st2,cresult);*/
         cleverbullet.push([tick,st1,st2,[wpred,hpred],reser]);
         //Make a bullet
-        var cir=r.circle(s.attr('cx'),s.attr('cy'),5);
+        var cir=r.circle(s.attr('cx'),s.attr('cy'),3);
         var dx=wpred-s.attr('cx'), dy=hpred-s.attr('cy');
         var rmd=Math.sqrt(dx*dx+dy*dy+0.0001)/4;
         cir.deltax=dx/rmd;
@@ -106,9 +108,10 @@ function cleverservant(r,angle) {
             if(cir.ticks<15) {
                 cir.ticks++;
                 cir.attr({'fill-opacity':cir.ticks/15.0});
-            } else { cir.entity=true; cir.attr({stroke:Raphael.rgb(200,0,0),'stroke-width':2});}
+            } else { cir.entity=false; cir.attr({stroke:Raphael.rgb(200,0,0),'stroke-width':2});}
         };
         bullets.addbullet(cir);
+        //cir.remove();
         return true;
     };
     s.destroy = function() {

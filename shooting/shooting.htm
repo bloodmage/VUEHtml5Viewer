@@ -20,6 +20,8 @@
                 <script src="jquery-1.7.2.min.js"></script>
                 <script src="komodel.js"></script>
                 <script src="raphael.js"></script>
+                <script src="g.raphael.js"></script>
+                <script src="g.bar.js"></script>
                 <script src="shooting.js"></script>
                 <script src="servant.js"></script>
                 <script src="player.js"></script>
@@ -34,7 +36,15 @@
                             for (var i=0;i<8;i++) servants.addservant(cleverservant(r,Math.PI*(i+1)/9));
                             var stp = Date.now();
                             if (localStorage['besttime']!=null)
-                                shootmodel.besttime(parseFloat(localStorage['besttime']));
+                            shootmodel.besttime(parseFloat(localStorage['besttime']));
+                            debugpred = function(x,y) {
+                                    var debugcir = r.circle(x,y,2).attr({stroke:'#f00'});
+                                    window.setTimeout(function(){debugcir.remove();},100);
+                            };
+                            debuglearn = function(x,y) {
+                                    var debugcir = r.circle(x,y,2).attr({stroke:'#00f'});
+                                    window.setTimeout(function(){debugcir.remove();},100);
+                            };
                             window.setInterval(function(){
                                     if (dead) return;
                                     bullets.nextmove();
